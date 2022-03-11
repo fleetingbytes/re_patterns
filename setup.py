@@ -67,7 +67,7 @@ setup(
             project_name: [],
             },
         python_requires=">=3.9",
-        install_requires=requirements,
+        install_requires=[],
         entry_points={},
         platforms=["any"],
     )
