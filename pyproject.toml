@@ -43,9 +43,18 @@ dynamic = [
 Homepage = "https://github.com/Nagidal/re_patterns"
 
 [tool.hatch.version]
-path = "re_patterns/__about__.py"
+path = "src/re_patterns/__about__.py"
 
 [tool.hatch.build]
 include = [
-    "re_patterns/*.py",
+    "src/re_patterns/*.py",
 ]
+
+[tool.hatch.envs.docs]
+depencencies = [
+    "pdoc3"
+]
+
+[tool.hatch.envs.docs.scripts]
+build = "pdoc --html --output-dir docs re_patterns"
+serve = "pdoc --html : re_patterns"

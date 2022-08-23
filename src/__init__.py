@@ -7,7 +7,6 @@ Helper functions to construct raw regular expressions strings
 
 
 from __future__ import annotations
-from datetime import date
 import re
 
 

@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 
 
+from datetime import date
+
+
 __author__ = "Sven Siegmund"
 __author_email__ = "sven.siegmund@gmail.com"
 __maintainer__ = __author__
