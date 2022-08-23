@@ -1,0 +1,51 @@
+[build-system]
+requires = [
+    "hatchling>=1.8.0",
+]
+build-backend = "hatchling.build"
+
+[project]
+name = "re-patterns"
+description = "python regular expressions for humans"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+authors = [
+    { name = "Sven Siegmund", email = "sven.siegmund@gmail.com" },
+]
+keywords = [
+    "expressions",
+    "re",
+    "regex",
+    "regular",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: OS Independent",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3.9",
+    "Topic :: Software Development",
+]
+dependencies = []
+dynamic = [
+    "version",
+]
+
+[project.urls]
+Homepage = "https://github.com/Nagidal/re_patterns"
+
+[tool.hatch.version]
+path = "re_patterns/__about__.py"
+
+[tool.hatch.build]
+include = [
+    "re_patterns/*.py",
+]

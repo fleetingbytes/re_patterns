@@ -22,4 +22,4 @@ Example:
 'Isaac'
 ```
 
-For rufther uses please look at the methods of the `Rstr` class in `__init__.py`.
+For further uses please look at the methods of the `Rstr` class in `__init__.py`.

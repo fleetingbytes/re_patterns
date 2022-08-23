@@ -8,17 +8,7 @@ Helper functions to construct raw regular expressions strings
 
 from __future__ import annotations
 from datetime import date
-from . import version
 import re
-
-
-__author__ = "Sven Siegmund"
-__author_email__ = "sven.siegmund@gmail.com"
-__maintainer__ = __author__
-__maintainer_email__ = __author_email__
-__release_date__ = date(year=2022, month=3, day=11)
-__version__ = version.version
-__repository__ = "https://github.com/Nagidal/re_patterns"
 
 
 class Rstr(str):
