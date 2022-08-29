@@ -52,7 +52,7 @@ dependencies = [
 ]
 
 [tool.hatch.envs.default.scripts]
-cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=src/cool_project --cov=tests"
+cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=src/re_patterns --cov=tests"
 no-cov = "cov --no-cov"
 
 [tool.hatch.envs.style]
@@ -83,7 +83,7 @@ python = ["39", "310", "311"]
 branch = true
 parallel = true
 omit = [
-  "src/cool_project/__about__.py",
+  "src/re_patterns/__about__.py",
 ]
 
 [tool.coverage.report]
