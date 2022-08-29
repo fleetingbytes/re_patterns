@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 
 
-from re_patterns import Rstr
 import pytest
+
+from re_patterns import Rstr
 
 
 def test_add():
@@ -94,7 +95,39 @@ def test_compile():
 
 
 def test_match():
-    m = Rstr(r"this.\n").match(r"this\n\n", flags=Rstr.re.DOTALL)
-    assert m
+    m = Rstr(r"this.\n").match("this\n\n", flags=Rstr.re.DOTALL)
+    assert m.span() == (0, 6)
+    # Note that even in MULTILINE mode, re.match() will only match
+    # at the beginning of the string and not at the beginning of each line
+    m = Rstr(r"^this.$").match("this\n\n", flags=Rstr.re.DOTALL | Rstr.re.MULTILINE)
+    assert m.span() == (0, 5)
+    m = Rstr(r"^this.$").match("\nthis\n\n", flags=Rstr.re.DOTALL | Rstr.re.MULTILINE)
+    assert m is None
 
 
+def test_search():
+    m = Rstr(r"^this.$").search("\n\nthis\n\n", flags=Rstr.re.DOTALL | Rstr.re.MULTILINE)
+    assert m.span() == (2, 7)
+
+
+def test_finditer():
+    s = "this\nthat\nyon\nit"
+    r = Rstr(".*[ai][st]")
+    it = r.finditer(s)
+    assert next(it).span() == (0, 4)
+    assert next(it).span() == (5, 9)
+    assert next(it).span() == (14, 16)
+    with pytest.raises(StopIteration):
+        next(it)
+
+
+def test_findall():
+    s = "this\nthat\nyon\nit"
+    r = Rstr(".*[ai][st]")
+    r.findall(s) == ["this", "that", "it"]
+
+
+def test_print_out():
+    r = Rstr(r"\\\\nthat\\n")
+    pattern = r.print_out()
+    assert pattern == r"\\nthat\n"
