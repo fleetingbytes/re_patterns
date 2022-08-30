@@ -215,7 +215,7 @@ class Rstr(str):
 
     def compile(self, *args, **kwargs) -> re.Pattern:
         """
-        Mirror of `re.compile`
+        Proxy for `re.compile`
         ```python
         >>> Rstr(r"\\d{4}").compile()
         re.compile('\\\\d{4}')
@@ -227,7 +227,7 @@ class Rstr(str):
 
     def match(self, *args, **kwargs) -> re.Match:
         """
-        Mirror of `re`'s `re.match`
+        Proxy for `re`'s `re.match`
         ```python
         >>> Rstr(r"\d{4}").named("year").match("2022-08-30")
         <re.Match object; span=(0, 4), match='2022'>
@@ -245,7 +245,7 @@ class Rstr(str):
 
     def search(self, *args, **kwargs) -> re.Match:
         """
-        Mirror of `re`'s `re.search`
+        Proxy for `re`'s `re.search`
         ```python
         >>> day = Rstr(r"\d{2}").named("day").\\
         ...     preceded_by("-").\\
@@ -260,7 +260,7 @@ class Rstr(str):
 
     def finditer(self, *args, **kwargs) -> Iterable[re.Match]:
         """
-        Mirror of `re`'s `re.finditer`
+        Proxy for `re`'s `re.finditer`
         ```python
         >>> utterance = "It is what it is, isn't it?"
         >>> matches = Rstr.finditer("it", utterance, Rstr.re.IGNORECASE)
@@ -276,7 +276,7 @@ class Rstr(str):
 
     def findall(self, *args, **kwargs) -> list[str]:
         """
-        Mirror of `re`'s `re.findall`
+        Proxy for `re`'s `re.findall`
         ```python
         >>> species = ("felis silvestris",
         ...     "panthera leo",
