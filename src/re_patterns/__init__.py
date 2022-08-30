@@ -45,7 +45,7 @@ class Rstr(str):
         """
         Adds the named group syntax around `self`, e.g.:
         ```python
-        >>> Rstr(r"\w+").named("kind_of_cheese") + " cheese"
+        >>> Rstr(r"\\w+").named("kind_of_cheese") + " cheese"
         '(?P<kind_of_cheese>\\w+) cheese'
         ```
         You can set `optional` to `True` to add the quantifier `?`, e.g.
@@ -174,13 +174,13 @@ class Rstr(str):
         Convenience function to compose an `Rstr` from multiple parts, e.g.:
         ```python
         >>> Rstr("").join(
-        ...     Rstr(r"\d{1,3}").named("degrees"),
+        ...     Rstr(r"\\d{1,3}").named("degrees"),
         ...     "°",
         ...     " ",
-        ...     Rstr(r"\d{1,2}").named("minutes"),
+        ...     Rstr(r"\\d{1,2}").named("minutes"),
         ...     "'",
         ...     " ",
-        ...     Rstr(r"\d{1,2}").named("seconds"),
+        ...     Rstr(r"\\d{1,2}").named("seconds"),
         ...     '"',
         ...     " ",
         ...     Rstr("NESW").group().named("direction"),
@@ -228,9 +228,9 @@ class Rstr(str):
         """
         Proxy for `re`'s `re.match`
         ```python
-        >>> Rstr(r"\d{4}").named("year").match("2022-08-30")
+        >>> Rstr(r"\\d{4}").named("year").match("2022-08-30")
         <re.Match object; span=(0, 4), match='2022'>
-        >>> Rstr(r"\d{4}").named("year").match("2022-08-30").group("year")
+        >>> Rstr(r"\\d{4}").named("year").match("2022-08-30").group("year")
         '2022'
         ```
         You can also use any additional arguments or keyword arguments, e.g.:
@@ -246,7 +246,7 @@ class Rstr(str):
         """
         Proxy for `re`'s `re.search`
         ```python
-        >>> day = Rstr(r"\d{2}").named("day").\\
+        >>> day = Rstr(r"\\d{2}").named("day").\\
         ...     preceded_by("-").\\
         ...     not_followed_by("-")
         >>> day.search("2022-08-30")
@@ -296,14 +296,14 @@ class Rstr(str):
         use the built-in `print` function.
         ```python
         >>> artist_duo = Rstr.join(
-        ...     Rstr(r"\w+").named("first"),
+        ...     Rstr(r"\\w+").named("first"),
         ...     " ",
         ...     Rstr("and|&").named("conjunctor"),
         ...     " ",
-        ...     Rstr(r"\w+").named("second"),
+        ...     Rstr(r"\\w+").named("second"),
         ... ).named("duo")
         >>> print(artist_duo)
-        (?P<duo>(?P<first>\w+) (?P<conjunctor>and|&) (?P<second>\w+))
+        (?P<duo>(?P<first>\\w+) (?P<conjunctor>and|&) (?P<second>\\w+))
         ```
         """
         return self.compile().pattern.replace("\\\\", "\\")

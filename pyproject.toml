@@ -49,6 +49,8 @@ path = "src/re_patterns/__about__.py"
 dependencies = [
     "pytest",
     "pytest-cov",
+    "twine",
+    "wheel",
 ]
 
 [tool.hatch.envs.default.scripts]
