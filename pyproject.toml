@@ -68,13 +68,13 @@ fmt = [
 ]
 
 [tool.hatch.envs.docs]
-depencencies = [
+dependencies = [
     "pdoc3"
 ]
 
 [tool.hatch.envs.docs.scripts]
 build = "pdoc --html --output-dir docs re_patterns"
-serve = "pdoc --html : re_patterns"
+serve = "pdoc --http : re_patterns"
 
 [[tool.hatch.envs.test.matrix]]
 python = ["39", "310", "311"]
